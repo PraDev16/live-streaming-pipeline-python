@@ -1,0 +1,21 @@
+1,Trek Marlin 5,Mountain Bike
+2,Giant Escape 3,Road Bike
+3,Specialized Rockhopper,Mountain Bike
+4,Cannondale Quick 4,Hybrid Bike
+5,Scott Aspect 950,Mountain Bike
+6,Merida Big Nine,Mountain Bike
+7,BMC Alpenchallenge,Urban Bike
+8,Trek Domane AL 2,Road Bike
+9,Giant Talon 3,Mountain Bike
+10,Cervelo Caledonia,Road Bike
+11,Polygon Xtrada 6,Mountain Bike
+12,Fuji Sportif 2.3,Road Bike
+13,Marin Fairfax 1,Hybrid Bike
+14,Kona Lava Dome,Mountain Bike
+15,Santa Cruz Chameleon,Trail Bike
+16,Orbea Avant,Road Bike
+17,Bianchi Via Nirone,Road Bike
+18,GT Aggressor Pro,Mountain Bike
+19,Diamondback Haanjo,Gravel Bike
+20,Raleigh Redux,Urban Bike
+21,Yeti SB140,Trail Bike
