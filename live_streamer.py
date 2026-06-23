@@ -10,7 +10,8 @@ database = "BikeStores"
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 FILE_PATH = os.path.join(BASE_DIR, "products_stream.txt")
 
-## object oriented python
+
+# Object Oriented Python
 class FileChangeHandler(FileSystemEventHandler):
     def on_modified(self, event):
         if event.src_path == FILE_PATH:
@@ -28,22 +29,32 @@ def load_file_to_db():
 
     cursor = conn.cursor()
 
-    # For demo: clear table and reload everything
-    cursor.execute("DELETE FROM stream_products")
-    conn.commit()
+    try:
+        # Delete old data (but don't commit yet)
+        cursor.execute("DELETE FROM stream_products")
 
-    with open(FILE_PATH, "r") as file:
-        for line in file:
-            product_id, product_name, category = line.strip().split(",")
+        # Reload file data
+        with open(FILE_PATH, "r") as file:
+            for line in file:
+                product_id, product_name, category = line.strip().split(",")
 
-            cursor.execute("""
-                INSERT INTO stream_products (product_id, product_name, category)
-                VALUES (?, ?, ?)
-            """, int(product_id), product_name, category)
+                cursor.execute("""
+                    INSERT INTO stream_products (product_id, product_name, category)
+                    VALUES (?, ?, ?)
+                """, int(product_id), product_name, category)
 
-    conn.commit()
-    conn.close()
-    print("Database updated successfully!")
+        # Commit only if everything succeeds
+        conn.commit()
+        print("Database updated successfully!")
+
+    except Exception as e:
+        # Rollback if anything fails
+        conn.rollback()
+        print("Transaction failed. Rolled back changes.")
+        print("Error:", e)
+
+    finally:
+        conn.close()
 
 
 event_handler = FileChangeHandler()
