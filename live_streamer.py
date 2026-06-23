@@ -7,9 +7,10 @@ import os
 server = r"(localdb)\MSSQLLocalDB"
 database = "BikeStores"
 
-FILE_PATH = r"C:\Users\d.pranathi\Desktop\hw_training\live_streaming_project\products_stream.txt"
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+FILE_PATH = os.path.join(BASE_DIR, "products_stream.txt")
 
-
+## object oriented python
 class FileChangeHandler(FileSystemEventHandler):
     def on_modified(self, event):
         if event.src_path == FILE_PATH:

@@ -13,11 +13,11 @@ conn = pyodbc.connect(
 
 cursor = conn.cursor()
 
-# Open text file
+# Open text file and splitting into rows
 with open(r"C:\Users\d.pranathi\Desktop\hw_training\live_streaming_project\products_stream.txt", "r") as file:
     for line in file:
         product_id, product_name, category = line.strip().split(",")
-
+## inserting into table
         cursor.execute("""
             INSERT INTO stream_products (product_id, product_name, category)
             VALUES (?, ?, ?)
